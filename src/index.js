@@ -15,7 +15,7 @@ const run = (rules, questionAndAnswer) => {
       console.log('Correct!');
     } else {
       return console.log(
-        `${answer} is wrong answer ;(. Correct answer was ${correctAnswer}. \nLet's try again, ${userName}!`,
+        `'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${userName}!`,
       );
     }
   }
