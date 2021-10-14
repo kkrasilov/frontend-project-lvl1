@@ -2,27 +2,26 @@ import _ from 'lodash';
 import run from '../index.js';
 
 const rules = 'What number is missing in the progression?';
+const progressionLength = 10;
 
-const arithmeticProgression = (firstNumber, differenceProgression) => {
-  const lengthProgression = 9;
-  let currentElemetProgression = firstNumber;
-  const progression = [firstNumber];
+const createProgression = (firstNumber, step) => {
+  const progression = [];
 
-  for (let i = 0; i < lengthProgression; i += 1) {
-    progression.push(currentElemetProgression += differenceProgression);
+  for (let i = 0; i < progressionLength; i += 1) {
+    progression.push((step * i) + firstNumber);
   }
 
   return progression;
 };
 
 const questionAndAnswer = () => {
-  const firstNumber = _.random(100);
-  const differenceProgression = _.random(100);
-  const randomElemet = _.random(9);
-  const progression = arithmeticProgression(firstNumber, differenceProgression);
-  const correctAnswer = String(progression[randomElemet]);
-  progression[randomElemet] = '..';
+  const progressionFirstNumber = _.random(100);
+  const progressionStep = _.random(100);
+  const progression = createProgression(progressionFirstNumber, progressionStep);
+  const indexToHide = _.random(progressionLength - 1);
+  progression[indexToHide] = '..';
   const question = `${progression.join(' ')}`;
+  const correctAnswer = String(progression[indexToHide]);
 
   return { question, correctAnswer };
 };
