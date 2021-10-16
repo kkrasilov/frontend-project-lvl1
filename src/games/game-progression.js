@@ -19,9 +19,9 @@ const questionAndAnswer = () => {
   const progressionStep = _.random(100);
   const progression = createProgression(progressionFirstNumber, progressionStep);
   const indexToHide = _.random(progressionLength - 1);
+  const correctAnswer = String(progression[indexToHide]);
   progression[indexToHide] = '..';
   const question = `${progression.join(' ')}`;
-  const correctAnswer = String(progression[indexToHide]);
 
   return { question, correctAnswer };
 };
